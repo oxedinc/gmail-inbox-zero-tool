@@ -1,118 +1,96 @@
 # InboxZero Tool (Gmail Label Manager)
-<img width="2428" height="2044" alt="CleanShot 2026-02-10 at 17 02 11@2x" src="https://github.com/user-attachments/assets/412ae1d0-e852-4d4d-aa0d-6d68df73da62" />
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-Herramienta de escritorio potente para limpiar tu bandeja de entrada y alcanzar el **Inbox Zero**. Administra etiquetas, filtros, y elimina correos masivamente (incluso permanentemente) usando la **Gmail API**.
-<img width="2428" height="2044" alt="CleanShot 2026-02-10 at 17 02 49@2x" src="https://github.com/user-attachments/assets/3c1a841b-f202-4c96-b1a8-97afd9639169" />
+<img width="100%" alt="CleanShot 2026-02-10 at 17 02 11@2x" src="https://github.com/user-attachments/assets/412ae1d0-e852-4d4d-aa0d-6d68df73da62" />
 
-## Funcionalidades
-- **Limpieza Profunda**: Eliminar permanentemente correos (bypass Trash) para liberar espacio.
-- **Búsqueda Inteligente**: Encuentra **archivos grandes (>10MB)** con un solo clic.
-- **Gestión de Etiquetas**: Crear, renombrar, eliminar y listar etiquetas (con colores).
-- Aplicar / quitar etiquetas a correos por consulta (`q`).
-- Crear y eliminar **filtros** (criterios y acciones).
-- Búsqueda por remitente y ranking de remitentes más frecuentes.
-- Vaciar la papelera (eliminar permanentemente lo que está en `TRASH`).
-- Interfaz gráfica con pestañas (Etiquetas, Búsqueda, Filtros, Papelera).
-- Estructura lista para subir a GitHub.
+**InboxZero Tool** is a powerful desktop application designed to help you clean up your Gmail inbox, reach **Inbox Zero**, and organize your digital life efficiently. It leverages the **Gmail API** to perform deep cleaning, advanced filtering, and bulk management tasks that the standard Gmail interface makes difficult.
 
-> **⚠️ Aviso:** Este proyecto realiza acciones **destructivas** si así lo indicas (p. ej., vaciar papelera o mover/eliminar muchos correos). Úsalo con responsabilidad y primero prueba en una cuenta secundaria.
+## Key Features
+
+-   **🧹 Deep Clean & Permanent Delete**: Bypass the Trash folder to instantly delete thousands of emails and free up storage space.
+-   **🔍 Advanced Search**:
+    -   **Regex Filtering**: Use Python Regular Expressions (e.g., `^no-reply.*`) to filter senders locally.
+    -   **Flexible Date Ranges**: Quickly filter by "Last Month", "Last Year", or custom periods.
+-   **📊 Top Senders Analysis**: Discover who is filling up your inbox.
+-   **🖱️ Context Menu Actions**: Right-click on any sender to:
+    -   View all their emails.
+    -   Create a filter instantly.
+    -   Copy their address.
+-   **🏷️ Label & Filter Management**: Create, rename, delete, and list labels and filters with ease.
+-   **📂 Large File Finder**: One-click search for emails larger than 10MB.
+-   **🗑️ Empty Trash**: Permanently delete all emails in the Trash folder.
+
+> **⚠️ Warning**: This tool performs **destructive actions** (permanent deletion). Use with caution and verify your queries before executing bulk actions.
 
 ---
 
-## Requisitos
+## Screenshots
 
-- Python 3.9+
-- Tkinter (viene con la mayoría de instalaciones de Python en Windows/macOS; en algunas distros Linux es necesario instalar `python3-tk`).
-- Credenciales de la **Gmail API** (OAuth client ID tipo *Desktop*).
+<img width="100%" alt="CleanShot 2026-02-10 at 17 02 49@2x" src="https://github.com/user-attachments/assets/3c1a841b-f202-4c96-b1a8-97afd9639169" />
 
-Instala dependencias (modo moderno):
+---
+
+## Installation
+
+### Prerequisites
+
+-   **Python 3.9+**
+-   **Gmail API Credentials** (OAuth 2.0 Client ID for Desktop).
+
+### Setup
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/oxedinc/gmail-inbox-zero-tool.git
+    cd gmail-inbox-zero-tool
+    ```
+
+2.  **Create a virtual environment**:
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # Windows: .venv\Scripts\activate
+    ```
+
+3.  **Install dependencies**:
+    ```bash
+    pip install -e .
+    ```
+
+4.  **Configure Credentials**:
+    -   Place your `credentials.json` file in the `credentials/` folder.
+    -   On first run, a browser window will open to authorize the app.
+
+## Usage
+
+Run the application:
+
 ```bash
-# Crear entorno virtual
-python -m venv .venv
-source .venv/bin/activate  # O en Windows: .venv\Scripts\activate
-
-# Instalar el proyecto y dependencias
-pip install -e .
-```
-
-## Activar Gmail API y credenciales
-
-1. Ve a Google Cloud Console → **APIs & Services** → **Credentials**.
-2. Crea un **OAuth client ID** tipo **Desktop** (también puedes usar `OAuth Consent Screen` en modo `External` para pruebas).
-3. Descarga el archivo **`credentials.json`** y colócalo en la carpeta `credentials/credentials.json`.
-4. En el primer arranque, se abrirá el navegador para autorizar. Se guardará `token.json` para futuros usos.
-
-**Scopes** usados (mínimos necesarios para todas las funciones):
-- `https://www.googleapis.com/auth/gmail.modify`
-- `https://www.googleapis.com/auth/gmail.labels`
-- `https://www.googleapis.com/auth/gmail.settings.basic`
-
-> Si quieres solo lectura, limita los scopes, pero desactivarás varias funciones.
-
-## Ejecutar
-
-### Opción A (Recomendada - Nueva)
-```bash
-# Simplemente ejecuta el script run.py desde la raíz
-# (asegúrate de tener el entorno activado)
 python run.py
 ```
 
-### Opción B (Clásica)
-```bash
-# Activar entorno y dependencias como arriba, luego:
-python -m src.gmail_manager.main
-```
-o
-```bash
-# Esto fallará si no estás en el directorio correcto o sin configuración de path
-# python src/gmail_manager/main.py  <-- NO USAR ESTO DIRECTAMENTE
-```
+### Tips
+-   **Search Tab**: Use this for analysis. Right-click on results to take action.
+-   **Regex Field**: Enter a Python regex pattern (e.g., `@newsletter\.com`) to filter the "Top Senders" list.
+-   **Query Field (`q`)**: Accepts standard Gmail search operators (e.g., `is:unread`, `larger:5M`).
 
-## Empaquetado / Distribución
+## Project Structure
 
-Este proyecto es simple; puedes usar `pyinstaller` si deseas un binario:
-```bash
-pip install pyinstaller
-pyinstaller --noconfirm --onefile --name GmailLabelManager src/gmail_manager/main.py
-```
-
-## Notas y límites
-
-- La **Papelera** sólo se vacía eliminando permanentemente los mensajes que ya están en `TRASH` (no hay endpoint de "vaciar papelera" global).
-- Los **Filtros** requieren scope `gmail.settings.basic` y se aplican a **mensajes nuevos** que lleguen tras su creación.
-- Las búsquedas aceptan la sintaxis de Gmail (campo `q`), por ejemplo: `from:alguien subject:(factura) newer_than:1y`.
-
-## Estructura
-
-```
+```text
 gmail_label_manager/
-├─ assets/
-├─ credentials/
-│  └─ credentials.json      # NO subir a GitHub
-├─ src/
-│  └─ gmail_manager/
-│     ├─ __init__.py
-│     ├─ config.py
-│     ├─ auth.py
-│     ├─ service.py
-│     ├─ labels.py
-│     ├─ search.py
-│     ├─ filters.py
-│     ├─ trash.py
-│     ├─ gui.py
-│     └─ main.py
-├─ tests/
-│  └─ test_smoke.py
-├─ .gitignore
-├─ LICENSE
-└─ requirements.txt
+├── src/gmail_manager/  # Source code
+├── credentials/        # OAuth credentials (ignored by git)
+├── tests/              # Unit tests
+├── run.py              # Entry point
+└── README.md           # Documentation
 ```
 
-## Licencia
+## Tags
 
-MIT. Consulta `LICENSE` para detalles.
+`python`, `gmail-api`, `email-cleaner`, `inbox-zero`, `tkinter`, `gui`, `email-optimization`, `productivity`, `spam-filter`, `regex-search`
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
