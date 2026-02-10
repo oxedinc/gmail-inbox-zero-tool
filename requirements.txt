@@ -1,0 +1,6 @@
+google-api-python-client>=2.129.0
+google-auth>=2.33.0
+google-auth-oauthlib>=1.2.1
+cryptography>=41.0.0
+# Tkinter: normalmente ya viene con Python en Win/macOS.
+# En Linux, instala el paquete del sistema (ej. `sudo apt-get install python3-tk`).
