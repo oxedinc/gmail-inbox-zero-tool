@@ -89,7 +89,7 @@ gmail_label_manager/
 
 ## Tags
 
-`python`, `gmail-api`, `email-cleaner`, `inbox-zero`, `tkinter`, `gui`, `email-optimization`, `productivity`, `spam-filter`, `regex-search`
+`python`, `gmail-api`, `email-cleaner`, `inbox-zero`, `productivity-tools`, `tkinter-gui`, `email-automation`, `spam-filter`, `bulk-delete`, `email-management`, `google-api`, `desktop-app`, `regex-search`, `digital-declutter`, `email-organizer`, `gmail-tools`, `open-source`, `python3`, `gui-application`, `automation`
 
 ## License
 
