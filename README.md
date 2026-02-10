@@ -1,10 +1,12 @@
 # InboxZero Tool (Gmail Label Manager)
+<img width="2428" height="2044" alt="CleanShot 2026-02-10 at 17 02 11@2x" src="https://github.com/user-attachments/assets/412ae1d0-e852-4d4d-aa0d-6d68df73da62" />
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 Herramienta de escritorio potente para limpiar tu bandeja de entrada y alcanzar el **Inbox Zero**. Administra etiquetas, filtros, y elimina correos masivamente (incluso permanentemente) usando la **Gmail API**.
+<img width="2428" height="2044" alt="CleanShot 2026-02-10 at 17 02 49@2x" src="https://github.com/user-attachments/assets/3c1a841b-f202-4c96-b1a8-97afd9639169" />
 
 ## Funcionalidades
 - **Limpieza Profunda**: Eliminar permanentemente correos (bypass Trash) para liberar espacio.
